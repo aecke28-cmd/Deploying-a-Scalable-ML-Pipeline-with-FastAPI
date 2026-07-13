@@ -1,7 +1,7 @@
 import pickle
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from ml.data import process_data
-from sklearn.ensemlble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier
 # TODO: add necessary import
 
 # Optional: implement hyperparameter tuning.
@@ -138,6 +138,6 @@ def performance_on_categorical_slice(
         encoder=encoder,
         lb=lb
     )
-    preds = None # your code here to get prediction on X_slice using the inference function
+    preds = inference(model, X_slice)
     precision, recall, fbeta = compute_model_metrics(y_slice, preds)
     return precision, recall, fbeta
