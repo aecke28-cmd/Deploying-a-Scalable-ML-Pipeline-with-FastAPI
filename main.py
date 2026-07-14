@@ -26,20 +26,22 @@ class Data(BaseModel):
     hours_per_week: int = Field(..., example=40, alias="hours-per-week")
     native_country: str = Field(..., example="United-States", alias="native-country")
 
-path = None # TODO: enter the path for the saved encoder 
+project_path = os.getcwd()
+path = os.path.join(project_path, "model", "encoder.pkl")
 encoder = load_model(path)
 
-path = None # TODO: enter the path for the saved model 
+path = os.path.join(project_path, "model", "model.pkl")
 model = load_model(path)
 
 # TODO: create a RESTful API using FastAPI
-app = None # your code here
+app = FastAPI(title="Census Income Prediction API", version="1.0.0")
 
 # TODO: create a GET on the root giving a welcome message
 @app.get("/")
 async def get_root():
-    """ Say hello!"""
+    #"" Say hello!"""
     # your code here
+    return{"welcome": "Say hello!"}
     pass
 
 
@@ -69,6 +71,12 @@ async def post_inference(data: Data):
         # use data as data input
         # use training = False
         # do not need to pass lb as input
+        X=data,
+        categorical_features=cat_features,
+        label=None,
+        training=False,
+        encoder=encoder
+
     )
-    _inference = None # your code here to predict the result using data_processed
+    _inference = inference(model, data_processed)
     return {"result": apply_label(_inference)}
