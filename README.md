@@ -27,3 +27,7 @@ Working in a command line environment is recommended for ease of use with git an
 *  Create a RESTful API using FastAPI this must implement:
     * GET on the root giving a welcome message.
     * POST that does model inference.
+
+
+# Give Credit where Credit is Due
+When I was stuck, I turned to the Q&A forums on the Deploying a "Machine Learning Pipeline with FastApi". I referenced and used some of the code tid bits that the mentor, Ray, had outlined, especially with the set up of the GitHub Actions. I of course, also referenced the Udacity material for this course as well.
